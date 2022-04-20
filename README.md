@@ -15,3 +15,5 @@ Add to ~/.xinitrc or autostart.sh:
 ```
 slstatus &
 ```
+
+If you want to modify some configuration, you can edit [config.h](./config.h)
