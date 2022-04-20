@@ -65,7 +65,20 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command, "  %s ",     "uname -r | awk -F \"-\" '{print $ 1}' "},
-	{ datetime,    "  %s ",           "%F" },
-	{ datetime,    "  %s ",           "%T" },
+	// cpu
+	{ cpu_perc,    "﬙ %s%%  ",         NULL},
+	// memory
+	{ run_command, "﯅ %s/",            "free | awk  '(NR==2){printf (\"%.1f\", $3/1024000)}'"},
+	{ run_command, "%sGi  ",           "free | awk  '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
+	// disk
+	{run_command,  " %s/",            "df / | awk '(NR==2){printf (\"%.1f\", $3/1024000)}'"},
+	{run_command,  "%sGi  ",           "df / | awk '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
+	// time
+	{ datetime,    " %s  ",           "%F" },
+	{ datetime,    " %s  ",           "%T" },
+	// volume
+	{ run_command, " %s  ",           "amixer sget Master | awk -F \"[][]\" '/Left:/ {print $2}'" },
+	{ run_command, " %s  ",           "amixer sget Capture | awk -F \"[][]\" '/Left:/ {print $2}'" },
+	// kernel
+	{ run_command, "[   %s ] ▎",      "uname -r | awk -F \"-\" '{print $ 1}' "},
 };
