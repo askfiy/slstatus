@@ -73,14 +73,16 @@ static const struct arg args[] = {
 	// disk
 	{run_command,  " %s/",            "df / | awk '(NR==2){printf (\"%.1f\", $3/1024000)}'"},
 	{run_command,  "%sGi  ",           "df / | awk '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
+	// wifi
+	{wifi_essid,   "直 [%s]  ",        "wls3"},  // Modify the wifi interface name
 	// time
 	{ datetime,    " %s  ",           "%F" },
 	{ datetime,    " %s  ",           "%T" },
 	// volume
 	{ run_command, " %s  ",           "amixer sget Master | awk -F \"[][]\" '/Left:/ {print $2}'" },
 	{ run_command, " %s  ",           "amixer sget Capture | awk -F \"[][]\" '/Left:/ {print $2}'" },
-	// wifi
-	{wifi_essid,   "直 [%s]  ",        "wls3"},
+	// // battery
+	// {run_command,  " %s  ",           "upower -i `upower -e | grep 'DisplayDevice'` | awk '(NR==7)''{print $2}'"},
 	// kernel
 	{ run_command, "[   %s ] ▎",      "uname -r | awk -F \"-\" '{print $ 1}' "},
 };
