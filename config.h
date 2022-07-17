@@ -72,9 +72,11 @@ static const struct arg args[] = {
 	{ run_command, "%sGi  ",           "free | awk  '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
 	// disk
 	{run_command,  " %s/",            "df / | awk '(NR==2){printf (\"%.1f\", $3/1024000)}'"},
-	{run_command,  "%sGi  ",           "df / | awk '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
+	// {run_command,  "%sGi  ",           "df / | awk '(NR==2){printf (\"%.1f\", $2/1024000)}'"},
+	{run_command,  "%si  ",           "lsblk | awk '(NR==4){printf $4}'"},
 	// wifi
-	{wifi_essid,   "直 [%s]  ",        "wls3"},  // Modify the wifi interface name
+	// {wifi_essid,   "直 [%s]  ",        "wls3"},  // Modify the wifi interface name
+	{wifi_essid,   "直 [%s]  ",        "wlp0s20f3"},  // Modify the wifi interface name
 	// time
 	{ datetime,    " %s  ",           "%F" },
 	{ datetime,    " %s  ",           "%T" },
